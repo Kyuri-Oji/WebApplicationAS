@@ -38,7 +38,11 @@ namespace WebApplication3.Pages
                     UserName = RModel.Email,
                     Email = RModel.Email,
 					FullName = RModel.FullName,
-					CreditCard = RModel.CreditCard
+					CreditCard = RModel.CreditCard,
+                    MobileNo = RModel.MobileNo,
+                    DeliveryAddr = RModel.DeliveryAddr,
+                    AboutMe = RModel.AboutMe
+
 				};
                 var result = await userManager.CreateAsync(user, RModel.Password);
                 if (result.Succeeded)

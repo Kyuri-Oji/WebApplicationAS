@@ -8,23 +8,36 @@ namespace WebApplication3.ViewModels
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
         [Compare(nameof(Password), ErrorMessage = "Password and confirmation password does not match")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Text)]
-        public string FullName { get; set; }
+        public string FullName { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.CreditCard)]
-        public string CreditCard { get; set; }
+        public string CreditCard { get; set; } = string.Empty;
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        public string MobileNo { get; set; } = string.Empty;
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string DeliveryAddr { get; set; } = string.Empty;
+
+		public string AboutMe { get; set; }
+		[Required]
+        [DataType(DataType.Upload)]
+        IFormFile ProfilePic { get; set; }
     }
 }
