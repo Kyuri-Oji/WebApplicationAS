@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using WebApplication3.Model;
+using WebApplication3.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AuthDbContext>();
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
 
 
 

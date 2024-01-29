@@ -9,41 +9,49 @@ namespace WebApplication3.Pages
     public class RegisterModel : PageModel
     {
 
-        private UserManager<ApplicationUser> userManager { get; }
-        private SignInManager<ApplicationUser> signInManager { get; }
+        private UserManager<User> userManager { get; }
+        private SignInManager<User> signInManager { get; }
+        private readonly AuthDbContext authDbContext;
+        private readonly ILogger<RegisterModel> logger;
 
         [BindProperty]
         public Register RModel { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager)
+        public RegisterModel(UserManager<User> userManager,
+        SignInManager<User> signInManager,
+        AuthDbContext dbContext,
+        ILogger<RegisterModel> logger)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.authDbContext = dbContext;
         }
-
-
 
         public void OnGet()
         {
+            // onget onget uooohhhh
         }
 
+        public Register GetRModel()
+        {
+            return RModel;
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser()
+                var user = new User()
                 {
                     UserName = RModel.Email,
                     Email = RModel.Email,
-					FullName = RModel.FullName,
-					CreditCard = RModel.CreditCard,
-                    MobileNo = RModel.MobileNo,
+                    FullName = RModel.FullName,
                     DeliveryAddr = RModel.DeliveryAddr,
-                    AboutMe = RModel.AboutMe
+                    AboutMe = RModel.AboutMe,
+                    Gender = RModel.Gender,
+                    Photo = RModel.Photo
 
-				};
+                };
                 var result = await userManager.CreateAsync(user, RModel.Password);
                 if (result.Succeeded)
                 {
@@ -57,12 +65,5 @@ namespace WebApplication3.Pages
             }
             return Page();
         }
-
-
-
-
-
-
-
     }
 }

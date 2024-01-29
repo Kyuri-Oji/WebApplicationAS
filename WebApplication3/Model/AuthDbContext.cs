@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApplication3.ViewModels;
 
 namespace WebApplication3.Model
 {
 
 
 
-    public class AuthDbContext : IdentityDbContext<ApplicationUser>
+    public class AuthDbContext : IdentityDbContext<User>
     {
         private readonly IConfiguration _configuration;
         //public AuthDbContext(DbContextOptions<AuthDbContext> options):base(options){ }
