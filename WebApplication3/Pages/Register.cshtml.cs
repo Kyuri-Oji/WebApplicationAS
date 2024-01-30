@@ -41,16 +41,32 @@ namespace WebApplication3.Pages
         {
             if (ModelState.IsValid)
             {
+                string imagePath = null;
+
+                if (RModel.Photo != null)
+                {
+				    imagePath = Path.Combine("wwwroot/images", RModel.Photo.FileName);
+				    using (var stream = new FileStream(imagePath, FileMode.Create))
+				    {
+					    await RModel.Photo.CopyToAsync(stream);
+                    }
+                }
+                else
+                {
+				    ModelState.AddModelError("", "Error uploading file.");
+                }
+
                 var user = new User()
                 {
                     UserName = RModel.Email,
                     Email = RModel.Email,
                     FullName = RModel.FullName,
+                    CreditCard = RModel.CreditCard,
+                    MobileNo = RModel.MobileNo,
                     DeliveryAddr = RModel.DeliveryAddr,
                     AboutMe = RModel.AboutMe,
                     Gender = RModel.Gender,
-                    Photo = RModel.Photo
-
+                    Photo = imagePath,
                 };
                 var result = await userManager.CreateAsync(user, RModel.Password);
                 if (result.Succeeded)

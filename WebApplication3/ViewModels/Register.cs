@@ -43,9 +43,8 @@ namespace WebApplication3.ViewModels
         [DataType(DataType.Text)]
         public string Gender { get; set; } = string.Empty;
 
-        [Required]
-        [BindProperty]
-        [DataType(DataType.Upload)]
+        [Required(ErrorMessage = "Photo must not be empty")]  
+        [JpgValidator("jpg", ErrorMessage = "Only .jpg files are allowed.")]
         public IFormFile? Photo { get; set; }
     }
 }
