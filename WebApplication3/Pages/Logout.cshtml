@@ -1,0 +1,17 @@
+﻿@page
+@model WebApplication3.Pages.LogoutModel
+@{
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <h3 class="mb-3">Oh, you're headed out?</h3>
+                <p>Leaving so soon?</p>
+
+                <div class="mb-3">
+                    <a href="/Index" class="btn btn-light ml-5 border-dark">Nah, I'm staying.</a>
+                    <button type="submit" class="btn btn-danger" asp-page-handler="Logout">Yep, see ya.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

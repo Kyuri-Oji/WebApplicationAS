@@ -9,6 +9,8 @@ namespace WebApplication3.Model
 
     public class AuthDbContext : IdentityDbContext<User>
     {
+        public DbSet<Audit> Auditlog { get; set; }
+
         private readonly IConfiguration _configuration;
         public AuthDbContext(IConfiguration configuration)
         {
