@@ -3,6 +3,14 @@
 @{
 }
 
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    } // idk if i need this i'll leave it here for now :)
+</script>
+
+
 <div class="container mt-5">
 
     <div class="row justify-content-center align-items-center">
@@ -77,7 +85,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary g-recaptcha"
+                            data-sitekey="6LfFLGMpAAAAANsXXMHayeAzRgWGGlHqtKGf-JMa"
+                            data-callback="onSubmit"
+                            data-action="submit">Register
+                    </button>
                 </div>
             </form>
         </div>

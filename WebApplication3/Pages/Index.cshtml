@@ -13,5 +13,13 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
     <h3 class="mt-5">Who's Logged in?</h3>
-    <p>@UserManager.GetUserName(User)</p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>It's you, @UserManager.GetUserName(User)!</p>
+    }
+    else
+    {
+        <p>Nobody at the moment. :(</p>
+    }
+
 </div>

@@ -48,8 +48,8 @@ namespace WebApplication3.Pages
                     Audit myLog = new()
                     {
                         UserEmail = LModel.Email,
-                        UserActivity = "Login"
-
+                        UserActivity = "Login",
+                        CreatedAt = DateTime.Now
                     };
 
                     _authDbContext.Auditlog.Add(myLog);

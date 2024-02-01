@@ -8,24 +8,23 @@ namespace WebApplication3.Pages
     public class LogoutModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
-        private readonly IHttpContextAccessor _contextAccessor;
 
-        public LogoutModel(SignInManager<User> signInManager, UserManager<User> userManager, IHttpContextAccessor contextAccessor)
+        public LogoutModel(SignInManager<User> signInManager)
         {
             _signInManager = signInManager;
-            _userManager = userManager;
-            _contextAccessor = contextAccessor;
-        }
-
-        public async Task<IActionResult>Logout()
-        {
-            await _signInManager.SignOutAsync();
-            return RedirectToPage("Index");
         }
 
         public void OnGet()
         {
         }
+
+        public async Task<IActionResult> OnPostLogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+            Console.WriteLine("Logout Successful");
+
+            return RedirectToPage("Login");
+        }
     }
+
 }
